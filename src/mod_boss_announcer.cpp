@@ -13,7 +13,7 @@ class Boss_Announcer : public PlayerScript
 {
 public:
 	Boss_Announcer() : PlayerScript("Boss_Announcer") {}
-	
+
     void OnLogin(Player *player)
     {
         if (BossAnnouncerEnable)
@@ -92,13 +92,14 @@ public:
                     if (!player->GetGuild())
                     {
                         // if we are in group lets get guild of the leader
-                        if (player->GetGroup())
-                        {
-                            if (itr->GetSource()->GetGroup()->IsLeader(itr->GetSource()->GetGUID()))
-                                if (!itr->GetSource()->GetGuild())
+                        if (player->GetGroup()) {
+                            if (itr->GetSource()->GetGroup()->IsLeader(itr->GetSource()->GetGUID())) {
+                                if (!itr->GetSource()->GetGuild()) {
                                     g_name = "< No Guild >";
-                                else
+                                } else {
                                     g_name = itr->GetSource()->GetGuildName();
+                                }
+                            }
                         }
 
                         g_name = "< No Guild >";
