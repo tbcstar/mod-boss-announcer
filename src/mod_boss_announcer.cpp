@@ -74,9 +74,9 @@ public:
                     if (itr->GetSource()->IsAlive())
                         Alive_players++;
 
-                    if (itr->GetSource()->IsHealerTalentSpec())
+                    if (itr->GetSource()->HasHealSpec())
                         Healers++;
-                    else if (itr->GetSource()->IsTankTalentSpec())
+                    else if (itr->GetSource()->HasTankSpec())
                         Tanks++;
                     else
                         DPS++;
@@ -92,13 +92,11 @@ public:
                     if (!player->GetGuild())
                     {
                         // if we are in group lets get guild of the leader
-                        if (player->GetGroup()) {
-                            if (itr->GetSource()->GetGroup()->IsLeader(itr->GetSource()->GetGUID())) {
-                                if (!itr->GetSource()->GetGuild()) {
-                                    g_name = "< No Guild >";
-                                } else {
-                                    g_name = itr->GetSource()->GetGuildName();
-                                }
+                        if (player->GetGroup() && itr->GetSource()->GetGroup()->IsLeader(itr->GetSource()->GetGUID())) {
+                            if (!itr->GetSource()->GetGuild()) {
+                                g_name = "< No Guild >";
+                            } else {
+                                g_name = itr->GetSource()->GetGuildName();
                             }
                         }
 
