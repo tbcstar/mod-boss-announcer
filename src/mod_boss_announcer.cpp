@@ -21,7 +21,7 @@ public:
         {
             if (BossAnnounceToPlayerOnLogin)
             {
-                ChatHandler(player->GetSession()).SendSysMessage("This server is running the |cff4CFF00BossAnnouncer |rmodule.");
+                ChatHandler(player->GetSession()).SendSysMessage("服务器已启用 |cff4CFF00Boss公告 |r模块。");
             }
         }
     }
@@ -61,9 +61,9 @@ public:
                     IsNormal = "10";
 
                 if (player->GetMap()->IsHeroic())
-                    IsHeroicMode = "|cffff0000Heroic|r";
+                    IsHeroicMode = "|cffff0000英雄|r";
                 else
-                    IsHeroicMode = "|cff00ff00Normal|r";
+                    IsHeroicMode = "|cff00ff00普通|r";
 
                 std::ostringstream stream;
 
@@ -95,20 +95,20 @@ public:
                         // if we are in group lets get guild of the leader
                         if (player->GetGroup() && itr->GetSource()->GetGroup()->IsLeader(itr->GetSource()->GetGUID())) {
                             if (!itr->GetSource()->GetGuild()) {
-                                g_name = "< No Guild >";
+                                g_name = "< 没有公会 >";
                             } else {
                                 g_name = itr->GetSource()->GetGuildName();
                             }
                         }
 
-                        g_name = "< No Guild >";
+                        g_name = "< 没有公会 >";
                     }
                     else
                         g_name = player->GetGuildName();
                 }
 
-                stream << "|CFF" << tag_colour << "|r|cff" << plr_colour << " " << p_name << "|r's Guild |cff" << guild_colour << "" << g_name << "|r has slain |CFF" << boss_colour << "[" << boss_name << "]|r with remaining |cff" << alive_text << "" << Alive_players << " /" << IsNormal << "|r players alive on " << IsHeroicMode << " mode, possible group |cff" << tag_colour << "Tank: " << Tanks  <<"|r |cff" << guild_colour <<
-                    " Healers: "<< Healers << "|r |cff" << boss_colour << " DPS: " << DPS << "|r";
+                stream << "|CFF" << tag_colour << "|r|cff" << plr_colour << " " << p_name << "|r's 公会 |cff" << guild_colour << "" << g_name << "|r 已经被杀 |CFF" << boss_colour << "[" << boss_name << "]|r 剩余 |cff" << alive_text << "" << Alive_players << " /" << IsNormal << "|r 存活玩家 " << IsHeroicMode << " 模式， 团队 |cff" << tag_colour << "坦克: " << Tanks  <<"|r |cff" << guild_colour <<
+                    " 治疗: "<< Healers << "|r |cff" << boss_colour << " DPS: " << DPS << "|r";
                 sWorld->SendServerMessage(SERVER_MSG_STRING, stream.str().c_str());
 
 
